@@ -49,7 +49,6 @@ public class ArticleController extends BaseController {
     @Log("新增文章")
     public R add(@RequestBody SysArticle sysArticle) {
         try {
-            sysArticle.setAuthor(this.getCurrentUser().getUsername());
             articleService.add(sysArticle);
             return new R();
         } catch (Exception e) {

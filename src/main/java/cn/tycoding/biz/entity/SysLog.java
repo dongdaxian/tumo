@@ -24,22 +24,22 @@ public class SysLog implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    private String username;
+//    private String username;
 
     private String operation;
 
-    private Long time;
+//    private Long time;
 
     private String method;
 
     private String params;
 
-    private String ip;
+//    private String ip;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @TableField(value = "create_time")
     private Date createTime;
 
-    private String location;
+//    private String location;
 }

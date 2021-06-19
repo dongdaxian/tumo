@@ -51,7 +51,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, SysUser> implements
     public void add(SysUser sysUser) {
         String encryptPassword = md5Util.encryptPassword(sysUser.getPassword());//加密
         sysUser.setPassword(encryptPassword);
-        sysUser.setAvatar("/img/avatar/default.jpg");
+//        sysUser.setAvatar("/img/avatar/default.jpg");
         sysUser.setCreateTime(new Date());
         userMapper.insert(sysUser);
     }

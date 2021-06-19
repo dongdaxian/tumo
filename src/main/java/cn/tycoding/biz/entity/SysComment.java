@@ -22,9 +22,9 @@ public class SysComment implements Serializable {
     private Long id;
 
     private Long articleId;
-    private String nickname;
+//    private String nickname;
     private String content;
-    private String email;
+//    private String email;
     private String ip;
     private String device;
     private String address;

@@ -43,8 +43,8 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements Lo
         IPage<SysLog> page = new Page<>(queryPage.getPage(), queryPage.getLimit());
         LambdaQueryWrapper<SysLog> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.orderByDesc(SysLog::getId);
-        queryWrapper.like(StringUtils.isNotBlank(log.getUsername()), SysLog::getUsername, log.getUsername());
-        queryWrapper.like(StringUtils.isNotBlank(log.getIp()), SysLog::getIp, log.getIp());
+//        queryWrapper.like(StringUtils.isNotBlank(log.getUsername()), SysLog::getUsername, log.getUsername());
+//        queryWrapper.like(StringUtils.isNotBlank(log.getIp()), SysLog::getIp, log.getIp());
         return logMapper.selectPage(page, queryWrapper);
     }
 
@@ -83,7 +83,7 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, SysLog> implements Lo
             }
         }
         log.setCreateTime(new Date());
-        log.setLocation(AddressUtil.getAddress(log.getIp()));
+//        log.setLocation(AddressUtil.getAddress(log.getIp()));
         this.save(log);
     }
 

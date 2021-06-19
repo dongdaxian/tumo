@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Aspect
 @Component
-public class LogAspect {
+public class  LogAspect {
 
     @Autowired
     private LogService logService;
@@ -45,18 +45,18 @@ public class LogAspect {
         }
         SysUser sysUser = (SysUser) SecurityUtils.getSubject().getPrincipal();
         if (sysUser != null) {
-            long beginTime = System.currentTimeMillis();
+//            long beginTime = System.currentTimeMillis();
             //获取Request请求
-            HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
+//            HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
             //设置IP地址
-            String ip = IPUtil.getIpAddr(request);
+//            String ip = IPUtil.getIpAddr(request);
             //记录时间（毫秒）
-            long time = System.currentTimeMillis() - beginTime;
+//            long time = System.currentTimeMillis() - beginTime;
             //保存日志
             SysLog log = new SysLog();
-            log.setIp(ip);
-            log.setTime(time);
-            log.setUsername(sysUser.getUsername());
+//            log.setIp(ip);
+//            log.setTime(time);
+//            log.setUsername(sysUser.getUsername());
             logService.saveLog(proceedingJoinPoint, log);
         }
         return result;

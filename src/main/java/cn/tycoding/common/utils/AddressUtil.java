@@ -35,7 +35,7 @@ public class AddressUtil {
             dbPath = tmpDir + "ip.db";
             file = new File(dbPath);
             try {
-                FileUtils.copyInputStreamToFile(AddressUtil.class.getClassLoader().getResourceAsStream("classpath:config/ip2region.db"), file);
+                FileUtils.copyInputStreamToFile(AddressUtil.class.getResourceAsStream("/config/ip2region.db"), file);
             } catch (IOException e) {
                 e.printStackTrace();
             }

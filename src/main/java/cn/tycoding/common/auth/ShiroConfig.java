@@ -104,7 +104,7 @@ public class ShiroConfig {
         AuthSessionManager sessionManager = new AuthSessionManager();
         Collection<SessionListener> listeners = new ArrayList<>();
         listeners.add(new ShiroSessionListener());
-        // 设置 session超时时间
+        // 设置session超时时间
         sessionManager.setGlobalSessionTimeout(properties.getShiro().getSessionTimeout() * 1000L);
         sessionManager.setSessionListeners(listeners);
         sessionManager.setSessionDAO(sessionDAO());

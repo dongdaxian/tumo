@@ -26,18 +26,15 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, SysArticle> i
 
     @Autowired
     private ArticleMapper articleMapper;
-
-    @Autowired
-    private CategoryService categoryService;
-
+//    @Autowired
+//    private CategoryService categoryService;
     @Autowired
     private TagService tagService;
-
-    @Autowired
-    private ArticleCategoryService articleCategoryService;
-
+//    @Autowired
+//    private ArticleCategoryService articleCategoryService;
     @Autowired
     private ArticleTagService articleTagService;
+
 
     @Override
     public List<SysArticle> findByCategory(Long id) {
@@ -55,7 +52,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, SysArticle> i
         LambdaQueryWrapper<SysArticle> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.orderByDesc(SysArticle::getId);
         queryWrapper.like(StringUtils.isNotBlank(sysArticle.getTitle()), SysArticle::getTitle, sysArticle.getTitle());
-        queryWrapper.like(StringUtils.isNotBlank(sysArticle.getAuthor()), SysArticle::getAuthor, sysArticle.getAuthor());
+//        queryWrapper.like(StringUtils.isNotBlank(sysArticle.getAuthor()), SysArticle::getAuthor, sysArticle.getAuthor());
         IPage<SysArticle> selectPage = articleMapper.selectPage(page, queryWrapper);
         findInit(selectPage.getRecords());
         return selectPage;
@@ -67,10 +64,10 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, SysArticle> i
     private void findInit(List<SysArticle> list) {
         if (!list.isEmpty()) {
             list.forEach(article -> {
-                List<SysCategory> sysCategoryList = categoryService.findByArticleId(article.getId());
-                if (sysCategoryList.size() > 0) {
-                    article.setCategory(sysCategoryList.get(0));
-                }
+//                List<SysCategory> sysCategoryList = categoryService.findByArticleId(article.getId());
+//                if (sysCategoryList.size() > 0) {
+//                    article.setCategory(sysCategoryList.get(0));
+//                }
                 List<SysTag> tagList = tagService.findByArticleId(article.getId());
                 article.setTags(tagList);
             });
@@ -106,13 +103,14 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, SysArticle> i
      */
     private void updateArticleCategoryTags(SysArticle sysArticle) {
         if (sysArticle.getId() != 0) {
-            if (sysArticle.getCategory() != null) {
-                articleCategoryService.deleteByArticleId(sysArticle.getId());
-                SysCategory sysCategory = categoryService.getById(sysArticle.getCategory());
-                if (sysCategory != null) {
-                    articleCategoryService.add(new SysArticleCategory(sysArticle.getId(), sysCategory.getId()));
-                }
-            }
+//            if (sysArticle.getCategory() != null) {
+//                articleCategoryService.deleteByArticleId(sysArticle.getId());
+//                //其实可以直接使用sysArticle.getCategory()的结果
+//                SysCategory sysCategory = categoryService.getById(sysArticle.getCategory());
+//                if (sysCategory != null) {
+//                    articleCategoryService.add(new SysArticleCategory(sysArticle.getId(), sysCategory.getId()));
+//                }
+//            }
             if (sysArticle.getTags() != null && sysArticle.getTags().size() > 0) {
                 articleTagService.deleteByArticleId(sysArticle.getId());
                 sysArticle.getTags().forEach(tag -> {
@@ -137,7 +135,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, SysArticle> i
         if (id != null && id != 0) {
             articleMapper.deleteById(id);
             //删除文章-分类表的关联
-            articleCategoryService.deleteByArticleId(id);
+//            articleCategoryService.deleteByArticleId(id);
             //删除文章-标签表的关联
             articleTagService.deleteByArticleId(id);
         }

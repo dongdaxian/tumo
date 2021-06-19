@@ -1,8 +1,8 @@
 package cn.tycoding.biz.controller.router;
 
-import cn.tycoding.biz.entity.SysLoginLog;
+//import cn.tycoding.biz.entity.SysLoginLog;
 import cn.tycoding.biz.entity.SysUser;
-import cn.tycoding.biz.service.LoginLogService;
+//import cn.tycoding.biz.service.LoginLogService;
 import cn.tycoding.biz.service.UserService;
 import cn.tycoding.common.constants.CommonConstant;
 import cn.tycoding.common.controller.BaseController;
@@ -36,8 +36,8 @@ public class LoginController extends BaseController {
     @Autowired
     private Md5Util md5Util;
 
-    @Autowired
-    private LoginLogService loginLogService;
+//    @Autowired
+//    private LoginLogService loginLogService;
 
     /**
      * 登录接口
@@ -56,19 +56,19 @@ public class LoginController extends BaseController {
             subject.login(token);
             HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
             //记录登录日志
-            SysLoginLog log = new SysLoginLog();
-            //获取HTTP请求
-            String ip = IPUtil.getIpAddr(request);
-            log.setIp(ip);
-            log.setUsername(super.getCurrentUser().getUsername());
-            log.setLocation(AddressUtil.getAddress(ip));
-            log.setCreateTime(new Date());
-            String header = request.getHeader(CommonConstant.USER_AGENT);
-            UserAgent userAgent = UserAgent.parseUserAgentString(header);
-            Browser browser = userAgent.getBrowser();
-            OperatingSystem operatingSystem = userAgent.getOperatingSystem();
-            log.setDevice(browser.getName() + " -- " + operatingSystem.getName());
-            loginLogService.saveLog(log);
+//            SysLoginLog log = new SysLoginLog();
+//            //获取HTTP请求
+//            String ip = IPUtil.getIpAddr(request);
+//            log.setIp(ip);
+//            log.setUsername(super.getCurrentUser().getUsername());
+//            log.setLocation(AddressUtil.getAddress(ip));
+//            log.setCreateTime(new Date());
+//            String header = request.getHeader(CommonConstant.USER_AGENT);
+//            UserAgent userAgent = UserAgent.parseUserAgentString(header);
+//            Browser browser = userAgent.getBrowser();
+//            OperatingSystem operatingSystem = userAgent.getOperatingSystem();
+//            log.setDevice(browser.getName() + " -- " + operatingSystem.getName());
+//            loginLogService.saveLog(log);
 
             request.getSession().setAttribute("user", this.getCurrentUser());
             return new R<>();

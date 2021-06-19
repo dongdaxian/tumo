@@ -15,7 +15,7 @@
     </select>
 
     <select id="findByTag" resultType="cn.tycoding.biz.entity.SysArticle">
-        SELECT a.id, a.title, a.author, a.create_time
+        SELECT a.id, a.title, a.create_time
         FROM tb_article a,
              tb_tag t,
              tb_article_tag at

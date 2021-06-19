@@ -26,8 +26,8 @@ public class SysArticle implements Serializable {
     private Long id;
 
     private String title;
-    private String author;
-    private String des;
+//    private String author;
+//    private String des;
     private String content;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -37,6 +37,6 @@ public class SysArticle implements Serializable {
     @TableField(exist = false)
     private List<SysTag> tags;
 
-    @TableField(exist = false)
-    private SysCategory category;
+//    @TableField(exist = false)
+//    private SysCategory category;
 }

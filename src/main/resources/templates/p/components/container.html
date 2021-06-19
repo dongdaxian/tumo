@@ -11,10 +11,9 @@
                                 </span>
                                 <span class="post-meta-item-text">Posted on</span>
                                 <time th:text="${#dates.format(p.createTime, 'yyyy-MM-dd')}"></time>
-                                &nbsp;&nbsp;/&nbsp;
-                                [[${p.category.name}]]
-                                &nbsp;/&nbsp;
-                                <span th:each="item : ${p.tags}">[[${item.name}]]、</span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="post-meta-item-text">Tags: </span>
+                                <span th:each="item : ${p.tags}">[[${item.name}]]&nbsp;&nbsp;&nbsp;</span>
                             </span>
                     </div>
                 </header>
@@ -31,18 +30,18 @@
     <div class="comments v">
         <div class="comments-content">
             <el-form :model="form" ref="ruleForm" :rules="rulesForm" size="small">
-                <el-row :gutter="20">
-                    <el-col :span="12">
-                        <el-form-item prop="nickname">
-                            <el-input v-model="form.nickname" placeholder="昵称"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="12">
-                        <el-form-item prop="email">
-                            <el-input v-model="form.email" placeholder="邮箱"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
+<!--                <el-row :gutter="20">-->
+<!--                    <el-col :span="12">-->
+<!--                        <el-form-item prop="nickname">-->
+<!--                            <el-input v-model="form.nickname" placeholder="昵称"></el-input>-->
+<!--                        </el-form-item>-->
+<!--                    </el-col>-->
+<!--                    <el-col :span="12">-->
+<!--                        <el-form-item prop="email">-->
+<!--                            <el-input v-model="form.email" placeholder="邮箱"></el-input>-->
+<!--                        </el-form-item>-->
+<!--                    </el-col>-->
+<!--                </el-row>-->
                 <el-row>
                     <el-col :span="24">
                         <el-form-item prop="content">
@@ -64,13 +63,18 @@
             <div class="comments-list-item" v-for="item in list">
                 <img class="comments-item-img" src="/img/avatar/default.jpg">
                 <div class="comments-list-item-view">
+<!--                    <div class="comments-item-head">-->
+<!--                        <span class="comments-item-name">{{item.nickname}}</span>-->
+<!--                        <span class="comments-item-device">{{item.device}}</span>-->
+<!--                    </div>-->
+<!--                    <div class="comments-item-time">-->
+<!--                        {{item.createTime}}-->
+<!--                    </div>-->
                     <div class="comments-item-head">
-                        <span class="comments-item-name">{{item.nickname}}</span>
-                        <span class="comments-item-device">{{item.device}}</span>
+                        <span class="comments-item-ip">{{item.address}}</span>
+                        <span class="comments-item-time">{{item.createTime}}</span>
                     </div>
-                    <div class="comments-item-time">
-                        {{item.createTime}}
-                    </div>
+
                     <div class="comments-item-content">
                         {{item.content}}
                     </div>

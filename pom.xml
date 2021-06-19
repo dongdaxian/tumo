@@ -65,6 +65,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+            <scope>provided</scope>
         </dependency>
 
         <!--server-api-->
@@ -222,6 +223,14 @@
             <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+
+            <optional>true</optional>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -229,6 +238,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+
                 <configuration>
                     <mainClass>cn.tycoding.TumoApplication</mainClass>
                 </configuration>
