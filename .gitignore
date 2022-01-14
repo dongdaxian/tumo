@@ -56,3 +56,7 @@ Servers
 .metadata
 upload
 gen_code
+
+
+deploy/output
+LICENSE

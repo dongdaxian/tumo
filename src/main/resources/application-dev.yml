@@ -4,4 +4,4 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: P@ssw0rd
-    url: jdbc:mysql://127.0.0.1:3306/tumo?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://101.34.14.247:3306/tumo?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
